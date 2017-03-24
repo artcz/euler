@@ -11,6 +11,8 @@
 
 
 #include <stdio.h>
+#include <time.h>
+
 
 int solve(int up_to) {
     int sum = 0;
@@ -23,5 +25,9 @@ int solve(int up_to) {
 }
 
 int main() {
-    printf("%d", solve(1000));
+    clock_t begin = clock();
+    int result = solve(1e3);
+    clock_t end = clock();
+    double time = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("%d [in %f seconds]", result, time);
 }
