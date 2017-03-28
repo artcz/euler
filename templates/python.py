@@ -15,11 +15,11 @@ def oneliner():
     return []
 
 
-def impl1():
+def solve1():
     return []
 
 
-def impl2():
+def solve2():
     return []
 
 
@@ -31,6 +31,6 @@ if __name__ == "__main__":
         t2 = time.time()
         return output, t2-t1
 
-    print timeit(impl1)
-    print timeit(impl2)
+    print timeit(solve1)
+    print timeit(solve2)
     print timeit(oneliner)
