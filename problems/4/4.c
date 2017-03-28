@@ -15,10 +15,11 @@
 
 
 int is_palindrome(int number) {
-    int original = number, reversed = 0;
-    while(number > 0) {
+    int original = number,
+        reversed = 0;
+
+    for(;number > 0; number /= 10) {
         reversed = reversed * 10 + number % 10;
-        number /= 10;
     }
     return original == reversed;
 }
@@ -26,19 +27,15 @@ int is_palindrome(int number) {
 
 int solve() {
 
-    int i = 100,
-        max = 1000,
+    int max = 1000,
         largest = 0;
 
-    while(i < max) {
-        int j = 100;
-        while(j < max) {
+    for(int i=100; i < max; i++) {
+        for(int j=100; j < max; j++) {
             if (is_palindrome(i*j) && (i*j > largest)) {
                 largest = i*j;
             }
-            j += 1;
         }
-        i += 1;
     }
 
     return largest;
