@@ -14,17 +14,16 @@
 
 int solve() {
     int sum = 0,
-        prev = 1,
+        _i = 1,
         goal = 4e6,
-        temp;
+        prev;
 
-    for(int i=1; i<=goal;) {
+    for(int i=1; i<=goal; i += prev) {
         if(i % 2 == 0) {
             sum += i;
         }
-        temp = prev;
-        prev = i;
-        i += temp;
+        prev = _i;
+        _i = i;
     }
     return sum;
 }
