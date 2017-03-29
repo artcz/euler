@@ -12,9 +12,13 @@
 #include <time.h>
 
 
-int fib_sum_even_up_to(int up_to) {
-    int sum = 0, prev = 1, temp;
-    for(int i=1; i<=up_to;) {
+int solve() {
+    int sum = 0,
+        prev = 1,
+        goal = 4e6,
+        temp;
+
+    for(int i=1; i<=goal;) {
         if(i % 2 == 0) {
             sum += i;
         }
@@ -28,7 +32,7 @@ int fib_sum_even_up_to(int up_to) {
 
 int main() {
     clock_t begin = clock();
-    int result = fib_sum_even_up_to(4e6);
+    int result = solve();
     clock_t end = clock();
     double time = (double)(end - begin) / CLOCKS_PER_SEC;
     printf("%d [in %f seconds]", result, time);
