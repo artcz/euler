@@ -20,9 +20,7 @@ solve = function() {
         prev;
 
     for(i=1; i<=goal; i += prev) {
-        if(i % 2 == 0) {
-            sum += i;
-        }
+        if(i % 2 == 0) sum += i;
         prev = _i;
         _i = i;
     }
