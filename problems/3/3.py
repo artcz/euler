@@ -25,13 +25,13 @@ def oneliner():
     # Protip: can rewrite lambda below as a one-liner regular function, can add
     # debugging information (like print n, i) before return, which makes it
     # easier to debug.
-    return reduce(
+    return max(reduce(
         lambda n, i: [
             (n[0] / i), n[1] + [i]
         ] if n[0] % i == 0 else [n[0], n[1]],
         xrange(2, int(math.sqrt(NUMBER))),
         [NUMBER, []],
-    )[1]
+    )[1])
 
 
 def solve():
@@ -40,15 +40,14 @@ def solve():
         This implementation goes from 0 to the highest prime factor, in this
         case causing 6857 iterations of the loop
         """
-        _factors = []
-        i = 2
+        _factors, i = [], 2
         while i <= n:
             if n % i == 0:
                 _factors.append(i)
                 n /= i
             i += 1
 
-        return _factors
+        return max(_factors)
 
     return factors(NUMBER)
 
