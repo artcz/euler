@@ -41,7 +41,7 @@ def solve():
         else:
             return i
 
-        if i % 100000 == 0:
+        if i % 1e6 == 0:
             print i
         i += 1
 
