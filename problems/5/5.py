@@ -46,31 +46,6 @@ def solve():
         i += 1
 
 
-def BONUS_reverse_check(n):
-    """
-    This BONUS_reverse_check function will take number n and will return which
-    consecutive numbers (starting from 2) are it's divisors
-    """
-    i, factors = 1, []
-
-    oneliner = False
-
-    if not oneliner:
-        while True:
-            if n % i == 0:
-                factors.append(i)
-                i += 1
-                continue
-            return factors
-
-    return list(
-        itertools.takewhile(
-            lambda x: n % x == 0,
-            itertools.count(1)
-        )
-    )
-
-
 if __name__ == "__main__":
 
     def timeit(function):
@@ -79,9 +54,8 @@ if __name__ == "__main__":
         t2 = time.time()
         return output, t2-t1
 
+    # On pypy:
+    # (232792560, 10.906013011932373)
+    # (232792560, 102.8434100151062)
     print timeit(solve)
-    # print BONUS_reverse_check(86503504325382144000L)
-    # print main()
-    # This oneliner is veeery slow, check def oneliner for more details.
-    # that said, both produce the same result of 232792560
-    # print "ONELINER: ", oneliner()
+    print timeit(oneliner)
