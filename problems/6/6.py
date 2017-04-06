@@ -20,10 +20,10 @@ import time
 
 
 def oneliner():
-    return sum([x**2 for x in range(100+1)]) - sum(range(100+1))**2
+    return abs(sum([x**2 for x in range(100+1)]) - sum(range(100+1))**2)
 
 
-def solve():
+def solve1():
     def sum_of_squares(n):
         squares = []
         for i in range(n+1):
@@ -33,7 +33,17 @@ def solve():
     def square_of_sum(n):
         return sum(range(n+1))**2
 
-    return sum_of_squares(100) - square_of_sum(100)
+    return abs(sum_of_squares(100) - square_of_sum(100))
+
+
+def solve2():
+    _sum, _sum_of_squares, N = 0, 0, 100
+
+    for i in range(N+1):
+        _sum += i
+        _sum_of_squares += i**2
+
+    return abs(_sum**2 - _sum_of_squares)
 
 
 if __name__ == "__main__":
@@ -43,5 +53,6 @@ if __name__ == "__main__":
         t2 = time.time()
         return output, t2-t1
 
-    print timeit(solve)
+    print timeit(solve1)
+    print timeit(solve2)
     print timeit(oneliner)
