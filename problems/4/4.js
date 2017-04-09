@@ -11,7 +11,7 @@ is_palindrome = function(n) {
     var num = n.toString(),
         // yes, really, that's real way of reversing string in js
         reversed_num = num.split("").reverse().join("");
-    return (num === reversed_num ? true : false);
+    return num === reversed_num;
 }
 
 
