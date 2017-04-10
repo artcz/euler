@@ -8,8 +8,8 @@
 //     the numbers from 1 to 20?
 
 solve1 = function() {
-    for(i=2520;;i++) {
-        for(j=2; j<=20; j++) {
+    for(var i=2520;;i++) {
+        for(var j=2; j<=20; j++) {
             if(i%j != 0) {
                 found = false;
                 break;
