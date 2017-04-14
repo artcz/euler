@@ -8,15 +8,41 @@ What is the 10 001st prime number?
 """
 
 
+import itertools
 import math
 import time
 
 
 def oneliner():
-    """
-    TODO: write oneliner version of this challange.
-    """
-    pass
+    # Fun fact, this 'oneliner' with names for lambdas is
+    # half-an-order-of-magnitude slower than the actual oneliner that does
+    # pretty much the same thing but in actual one line. shrug.jpg
+    #
+    # is_prime = lambda n: all(
+    #     [n % j != 0
+    #      for j in range(2, int(math.sqrt(n))+1)]
+    # )
+    # infinite_primes = (
+    #     p for p in itertools.count()
+    #     if is_prime(p) and p >= 2
+    # )
+    # return list(
+    #     itertools.takewhile(
+    #         lambda x: x[0] <= 10001, enumerate(infinite_primes, 1)
+    #     )
+    # )[-1]
+
+    return list(
+        itertools.takewhile(
+            lambda x: x[0] <= 10001, enumerate(
+                (p for p in itertools.count()
+                if (all(p % j != 0
+                       for j in range(2, int(math.sqrt(p))+1))
+                    and p >= 2)),
+                1  # start enumerating from 1.
+            )
+        )
+    )[-1]
 
 
 def solve():
