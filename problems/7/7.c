@@ -18,8 +18,9 @@ int solve() {
     int prime_count = 2, number = 2, is_prime = FALSE;
 
     while(1) {
-        // fun fact: going up to sqrt(number) takes about 0.02s
-        // going to j <= number takes much much much longer.
+        // going to j <= number will make outer while endless, since is_prime
+        // will always end up as FALSE. If you don't want to use sqrt(number)
+        // go with < instead of <= ;)
         for(int j = 2; j <= sqrt(number); j++) {
             if(number % j == 0) {
                 is_prime = FALSE;
