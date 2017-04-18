@@ -57,7 +57,11 @@ BIG_NUMBER = """
 
 
 def oneliner():
-    "TODO: write oneliner version of this thing"
+    return max(
+        reduce(lambda x, y: int(x) * int(y),
+               BIG_NUMBER[n:n+13])
+        for n in range(len(BIG_NUMBER) - 13 - 1)
+    )
 
 
 def solve1():
