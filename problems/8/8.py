@@ -82,6 +82,21 @@ def solve1():
     return max(products)
 
 
+def solve2():
+    adjacent_digits = 13
+    greatest_product = 0
+
+    for n in range(len(BIG_NUMBER)-adjacent_digits-1):
+        p = 1
+        for d in BIG_NUMBER[n:n+adjacent_digits]:
+            p *= int(d)
+
+        if p > greatest_product:
+            greatest_product = p
+
+    return greatest_product
+
+
 if __name__ == "__main__":
 
     def timeit(function):
@@ -91,4 +106,5 @@ if __name__ == "__main__":
         return output, t2-t1
 
     print timeit(solve1)
+    print timeit(solve2)
     print timeit(oneliner)
