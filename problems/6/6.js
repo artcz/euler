@@ -27,8 +27,7 @@ solve = function() {
         sum_of_squares += i*i;
     }
 
-    result = sum_of_squares - sum*sum;
-    return Math.abs(result)
+    return Math.abs(sum_of_squares - sum*sum);
 }
 
 
