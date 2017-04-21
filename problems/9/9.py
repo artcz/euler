@@ -24,9 +24,8 @@ def solve1():
     for c in range(5, 500):
         for b in range(1, c):
             for a in range(1, b):
-                assert not (
-                    a + b + c == 1000 and a**2 + b**2 == c**2
-                ), (a, b, c, a*b*c)
+                if a + b + c == 1000 and a**2 + b**2 == c**2:
+                    return a, b, c, a * b * c
 
 
 if __name__ == "__main__":
