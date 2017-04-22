@@ -16,7 +16,7 @@ def oneliner():
     pass
 
 
-def solve():
+def solve1():
     primes = []
 
     counter = 2
@@ -34,6 +34,20 @@ def solve():
     return sum(primes)
 
 
+def solve2():
+
+    _sum = 0
+    for i in range(2, int(2e6)):
+        for j in range(2, int(math.sqrt(i))+1):
+            if i % j == 0:
+                break
+        else:
+            _sum += i
+
+    return _sum
+
+
+
 if __name__ == "__main__":
 
     def timeit(function):
@@ -42,5 +56,6 @@ if __name__ == "__main__":
         t2 = time.time()
         return output, t2-t1
 
-    print timeit(solve)
+    # print timeit(solve1)
+    print timeit(solve2)
     print timeit(oneliner)
