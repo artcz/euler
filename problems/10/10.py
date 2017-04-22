@@ -53,6 +53,18 @@ def solve2():
     return _sum
 
 
+def solve3():
+    """Eratosthenes"""
+    total = int(2e6)
+    numbers = [[i, True] for i in range(total + 1)]
+    for t in range(2, int(math.sqrt(total)) + 1):
+        if numbers[t][1]:
+            for m in range(2*t, total + 1, t):
+                numbers[m][1] = False
+
+
+    return sum(x for x, y in numbers if y and x >= 2)
+
 
 if __name__ == "__main__":
 
@@ -62,6 +74,7 @@ if __name__ == "__main__":
         t2 = time.time()
         return output, t2-t1
 
-    print timeit(solve1)
+    print timeit(solve3)
     print timeit(solve2)
+    print timeit(solve1)
     print timeit(oneliner)
