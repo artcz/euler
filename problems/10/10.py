@@ -12,8 +12,14 @@ import time
 
 
 def oneliner():
-    "TODO: write oneliner"
-    pass
+
+    return sum(
+        p
+        for p in range(2, int(2e6))
+        if (all(p % j != 0
+                for j in range(2, int(math.sqrt(p)) + 1))
+            and p >= 2)
+    )
 
 
 def solve1():
@@ -56,6 +62,6 @@ if __name__ == "__main__":
         t2 = time.time()
         return output, t2-t1
 
-    # print timeit(solve1)
+    print timeit(solve1)
     print timeit(solve2)
     print timeit(oneliner)
