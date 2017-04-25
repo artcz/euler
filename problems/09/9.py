@@ -23,6 +23,14 @@ def oneliner():
             if a + b + c == 1000 and a**2 + b**2 == c**2][0]
 
 
+def oneliner2():
+
+    return [a * b * (1000 - a - b)
+            for b in range(5, 500)
+            for a in range(1, b)
+            if a**2 + b**2 == (1000 - a - b)**2][0]
+
+
 def solve1():
 
     for c in range(5, 500):
@@ -52,3 +60,4 @@ if __name__ == "__main__":
     print timeit(solve1)
     print timeit(solve2)
     print timeit(oneliner)
+    print timeit(oneliner2)
