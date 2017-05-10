@@ -66,14 +66,50 @@ def solve2():
 
         return length + 1  # final one.
 
-    longest = 0
+    longest = 0, 0
     for i in range(2, 10**6):
         if i % 10**5 == 0:
             print i
 
         length = collatz(i)
-        if length > longest:
-            longest = length
+        if length > longest[1]:
+            longest = i, length
+
+    return longest
+
+
+def solve3():
+
+    LENGTHS = {}
+
+    def collatz(n):
+        length = 0
+        original = n
+
+        while n != 1:
+            if n in LENGTHS:
+                length += LENGTHS[n]
+                break
+
+            if n % 2 == 0:
+                n = n // 2
+            else:
+                n = 3*n + 1
+
+            length += 1
+
+        LENGTHS[original] = length
+
+        return length + 1  # final one.
+
+    longest = 0, 0
+    for i in range(2, 10**6):
+        if i % 10**5 == 0:
+            print i
+
+        length = collatz(i)
+        if length > longest[1]:
+            longest = i, length
 
     return longest
 
@@ -88,4 +124,5 @@ if __name__ == "__main__":
 
     print timeit(solve1)
     print timeit(solve2)
+    print timeit(solve3)
     # print timeit(oneliner)
