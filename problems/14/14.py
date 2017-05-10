@@ -27,7 +27,7 @@ def oneliner():
     pass
 
 
-def solve():
+def solve1():
 
     def next(n):
         if n % 2 == 0:
@@ -36,8 +36,8 @@ def solve():
 
     sequences_lengths = {}
 
-    for i in range(2, 1000000):
-        if i % 10000 == 0:
+    for i in range(2, 10**6):
+        if i % 10**5 == 0:
             print i
 
         sequence = [i]
@@ -51,6 +51,33 @@ def solve():
     return max(sequences_lengths.iteritems(), key=lambda x: x[1])
 
 
+def solve2():
+
+    def collatz(n):
+        length = 0
+
+        while n != 1:
+            if n % 2 == 0:
+                n = n // 2
+            else:
+                n = 3*n + 1
+
+            length += 1
+
+        return length + 1  # final one.
+
+    longest = 0
+    for i in range(2, 10**6):
+        if i % 10**5 == 0:
+            print i
+
+        length = collatz(i)
+        if length > longest:
+            longest = length
+
+    return longest
+
+
 if __name__ == "__main__":
 
     def timeit(function):
@@ -59,5 +86,6 @@ if __name__ == "__main__":
         t2 = time.time()
         return output, t2-t1
 
-    print timeit(solve)
-    print timeit(oneliner)
+    print timeit(solve1)
+    print timeit(solve2)
+    # print timeit(oneliner)
