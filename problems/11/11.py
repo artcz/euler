@@ -58,9 +58,48 @@ GRID_TXT = """
 """.strip()
 
 
+GRID = [[int(x) for x in line.split()] for line in GRID_TXT.splitlines()]
+
+
 def oneliner():
-    """TODO: write oneliner"""
-    pass
+
+    global GRID
+
+    adjacent_numbers, max_col, max_row = 4, 20, 20
+
+    return max([
+        # horizontal
+        reduce(lambda x, y: x*y, line[n:n+adjacent_numbers], 1)
+        for line in GRID
+        for n in range(len(line)-adjacent_numbers+1)
+    ] + [
+        # vertical
+        reduce(
+            lambda x, y: x*y,
+            (GRID[row_index+i][col_index] for i in range(adjacent_numbers)),
+            1
+        )
+        for col_index in range(max_col)
+        for row_index in range(max_row - adjacent_numbers + 1)
+    ] + [
+        # diagonal +
+        reduce(
+            lambda x, y: x*y,
+            (GRID[row_index+i][col_index+i] for i in range(adjacent_numbers)),
+            1
+        )
+        for col_index in range(max_col - adjacent_numbers)
+        for row_index in range(max_row - adjacent_numbers + 1)
+    ] + [
+        # diagonal -
+        reduce(
+            lambda x, y: x*y,
+            (GRID[row_index+i][col_index-i] for i in range(adjacent_numbers)),
+            1
+        )
+        for col_index in range(adjacent_numbers, max_col)
+        for row_index in range(max_row - adjacent_numbers + 1)
+    ])
 
 
 def solve():
@@ -122,6 +161,7 @@ def solve():
         return max(HORIZONTAL_PRODUCTS + VERTICAL_PRODUCTS + DIAGONAL_PRODUCTS)
 
     return naive()
+
 
 if __name__ == "__main__":
 
