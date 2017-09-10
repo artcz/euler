@@ -23,7 +23,7 @@ def problem_44():
     def P(n):
         return int((n * (3*n - 1)) / 2)
 
-    def unP(x):
+    def is_P(x):
         # FYI – there were missing parentheses here.
         n = (math.sqrt(24*x + 1) + 1) / 6
         return n if int(n) == n else False
@@ -48,7 +48,7 @@ def problem_44():
 
             K = P(k)
 
-            if unP(J + K) and unP(abs(J - K)):
+            if is_P(J + K) and is_P(abs(J - K)):
                 return D(J, K), J, K, j, k
 
 
