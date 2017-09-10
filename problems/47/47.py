@@ -38,13 +38,15 @@ def distinct_prime_factors(p):
 dpf = distinct_prime_factors
 
 LENGTH = 4
+assert LENGTH >= 2
 
 
 def problem_47():
 
-    i = 10
+    i = 1
     consecutive_numbers = deque(maxlen=LENGTH)
     consecutive_numbers.append(i)
+
     while True:
         i += 1
 
@@ -53,21 +55,12 @@ def problem_47():
         if i % 1000 == 0:
             print i
 
-        c = consecutive_numbers
+        dpfs = [dpf(x) for x in consecutive_numbers]
 
-        try:
-            c_0 = dpf(c[0])
-            c_1 = dpf(c[1])
-            c_2 = dpf(c[2])
-            c_3 = dpf(c[3])
+        if all(len(x) == LENGTH for x in dpfs) and\
+           all(d != dpfs[0] for d in dpfs[1:]):
 
-            if len(c_0) == 4 and len(c_1) == 4 and len(c_2) == 4\
-               and len(c_3) == 4\
-               and c_0 != c_1 != c_2 != c_3:
-
-                return "found", c[0], c[1], c[2], c[3]
-        except IndexError:
-            pass
+            return "found", consecutive_numbers
 
 
 print(problem_47())
