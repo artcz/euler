@@ -1,3 +1,4 @@
+# coding: utf-8
 """
 
 
@@ -31,11 +32,11 @@ def problem_45():
         n = (math.sqrt(8*x + 1) + 1) / 4
         return n if int(n) == n else False
 
-    i = 0
+    i = 40755
     while True:
         i += 1
         if is_triangle(i) and is_pentagonal(i) and is_hexagonal(i):
-            print i
+            return i
 
 
 print(problem_45())
